@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan variabel */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #ff7e5f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #ff6b47;
+        }
+        
+        /* Header dan Navigasi */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: var(--transition);
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .skills {
+            flex: 1;
+        }
+        
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+            transition: width 1.5s ease;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            background-color: #f8f9fa;
+        }
+        
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 0 10px;
+            background-color: transparent;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-info {
+            padding: 20px;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(74, 111, 165, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsif */
+        @media (max-width: 992px) {
+            .hero-content, .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav.active ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            nav.active ul li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .portfolio-filters {
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header dan Navigasi -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Porto<span>folio</span></a>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Halo, saya <span class="highlight">RFF707</span></h1>
+                <h2>Web Developer & Desainer</h2>
+                <p>Saya seorang pengembang web dengan pengalaman 1+ tahun dalam membuat website. Saya berspesialisasi dalam HTML, CSS, JavaScript, dan framework front-end.</p>
+                <a href="#portfolio" class="btn">Lihat Portfolio</a>
+                <a href="#contact" class="+6281348385122">Hubungi Saya</a>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/6281348385122"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:raffa27062010@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/jpeg;base64,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" alt="Foto Profil">
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Saya Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Selamat datang di portofolio saya! Saya adalah seorang pengembang web yang passionate tentang menciptakan pengalaman digital yang menarik dan fungsional.</p>
+                    <p>Saya telah menyelesaikan berbagai proyek untuk klien dari berbagai industri, mulai dari website bisnis kecil hingga web yang kompleks. Pendekatan saya selalu berfokus pada kualitas, performa, dan pengalaman pengguna.</p>
+                    <p>Saat ini, saya terus mengembangkan keterampilan saya dengan mempelajari teknologi terbaru dalam pengembangan web dan desain UI/UX.</p>
+                    <a href="#" class="btn">Download CV</a>
+                </div>
+                <div class="skills">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React.js</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-level="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Portfolio Saya</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                <button class="filter-btn" data-filter="app">Aplikasi</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Item Portfolio 1 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Proyek Website E-commerce">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Website E-commerce</h3>
+                        <p>Website toko online dengan sistem pembayaran terintegrasi dan dashboard admin.</p>
+                    </div>
+                </div>
+                
+                <!-- Item Portfolio 2 -->
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Desain UI/UX Aplikasi Mobile">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>UI/UX Aplikasi Mobile</h3>
+                        <p>Desain pengalaman pengguna untuk aplikasi kesehatan dan kebugaran.</p>
+                    </div>
+                </div>
+                
+                <!-- Item Portfolio 3 -->
+                <div class="portfolio-item" data-category="app">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aplikasi Dashboard Analytics">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Aplikasi dashboard dengan visualisasi data real-time dan laporan interaktif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Hubungi Saya</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Lokasi</h3>
+                            <p>medan, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>raffa27062010@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>+62 813 4838 5122</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subjek" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>RFF707</h3>
+                <p>Web Developer & Desainer</p>
+                <div class="social-links">
+                    <a href="https://wa.me/6281348385122"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:raffa27062010@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p>&copy; 2026 Portofolio. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Animasi skill bar saat scroll
+        const skillLevels = document.querySelectorAll('.skill-level');
+        
+        function animateSkillBars() {
+            skillLevels.forEach(skill => {
+                const level = skill.getAttribute('data-level');
+                skill.style.width = '0%';
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                skill.style.width = level + '%';
+                            }, 200);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(skill);
+            });
+        }
+        
+        // Filter portfolio
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            
+            // Simple validation
+            if (name && email) {
+                alert(`Terima kasih ${name}! Pesan Anda telah berhasil dikirim. Saya akan membalas ke email ${email} segera.`);
+                contactForm.reset();
+            } else {
+                alert('Harap isi semua bidang yang diperlukan.');
+            }
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Initialize animations when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            animateSkillBars();
+        });
+    </script>
+</body>
+</html>
